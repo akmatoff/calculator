@@ -1,24 +1,26 @@
-import { useState } from "react";
-import { IOutput } from "../types/types";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 import Button from "./Button";
 import "./Calculator.css";
 
 function Calculator() {
-  const [output, setOutput] = useState<IOutput>({
-    currentOperand: "0",
-    prevOperand: "",
-  });
-  const [operation, setOperation] = useState(null);
-
-  const updateDisplay = () => {};
-
-  const appendNumber = () => {};
+  const currentOperand = useSelector(
+    (state: RootState) => state.calculator.currentOperand
+  );
+  const prevOperand = useSelector(
+    (state: RootState) => state.calculator.prevOperand
+  );
+  const operation = useSelector(
+    (state: RootState) => state.calculator.operation
+  );
 
   return (
     <div id="calculator" className="flex-column">
       <div id="display" className="flex-column">
-        <div id="prev-operand">{output.prevOperand}</div>
-        <div id="current-operand">{output.currentOperand}</div>
+        <div id="prev-operand">{prevOperand}</div>
+        <div id="current-operand">
+          {currentOperand === "" ? 0 : currentOperand}
+        </div>
       </div>
       <div id="buttons-container">
         <Button id="clear" type="operation">

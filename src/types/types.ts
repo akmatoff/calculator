@@ -4,7 +4,8 @@ export interface IButton {
   children?: string;
 }
 
-export interface IOutput {
+export interface ICalculatorState {
   currentOperand: string;
   prevOperand: string;
+  operation: "+" | "-" | "/" | "x" | null;
 }
