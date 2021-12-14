@@ -3,8 +3,9 @@ import "./Calculator.css";
 function Calculator() {
   return (
     <div id="calculator" className="flex-column">
-      <div id="display" className="flex-row">
-        0
+      <div id="display" className="flex-column">
+        <div id="prev-operand"></div>
+        <div id="current-operand">0</div>
       </div>
       <div id="buttons-container">
         <div id="clear" className="button operation">
