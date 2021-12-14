@@ -7,13 +7,13 @@ function Calculator() {
         0
       </div>
       <div id="buttons-container">
-        <div id="clear" className="button">
+        <div id="clear" className="button operation">
           AC
         </div>
-        <div id="divide" className="button">
+        <div id="divide" className="button operation">
           /
         </div>
-        <div id="multiple" className="button">
+        <div id="multiple" className="button operation">
           X
         </div>
 
@@ -27,7 +27,7 @@ function Calculator() {
           3
         </div>
 
-        <div id="subtract" className="button">
+        <div id="subtract" className="button operation">
           -
         </div>
 
@@ -41,7 +41,7 @@ function Calculator() {
           6
         </div>
 
-        <div id="add" className="button">
+        <div id="add" className="button operation">
           +
         </div>
 
@@ -55,7 +55,7 @@ function Calculator() {
           9
         </div>
 
-        <div id="equals" className="button">
+        <div id="equals" className="button operation">
           =
         </div>
 
