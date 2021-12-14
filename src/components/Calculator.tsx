@@ -1,71 +1,90 @@
+import { useState } from "react";
+import { IOutput } from "../types/types";
+import Button from "./Button";
 import "./Calculator.css";
 
 function Calculator() {
+  const [output, setOutput] = useState<IOutput>({
+    currentOperand: "0",
+    prevOperand: "",
+  });
+  const [operation, setOperation] = useState(null);
+
+  const updateDisplay = () => {};
+
+  const appendNumber = () => {};
+
   return (
     <div id="calculator" className="flex-column">
       <div id="display" className="flex-column">
-        <div id="prev-operand"></div>
-        <div id="current-operand">0</div>
+        <div id="prev-operand">{output.prevOperand}</div>
+        <div id="current-operand">{output.currentOperand}</div>
       </div>
       <div id="buttons-container">
-        <div id="clear" className="button operation">
+        <Button id="clear" type="operation">
           AC
-        </div>
-        <div id="divide" className="button operation">
+        </Button>
+        <Button id="divide" type="operation">
           /
-        </div>
-        <div id="multiple" className="button operation">
-          X
-        </div>
+        </Button>
+        <Button id="multiply" type="operation">
+          x
+        </Button>
 
-        <div id="one" className="button">
+        <Button id="one" type="number">
           1
-        </div>
-        <div id="two" className="button">
+        </Button>
+
+        <Button id="two" type="number">
           2
-        </div>
-        <div id="three" className="button">
+        </Button>
+
+        <Button id="three" type="number">
           3
-        </div>
+        </Button>
 
-        <div id="subtract" className="button operation">
+        <Button id="subtract" type="operation">
           -
-        </div>
+        </Button>
 
-        <div id="four" className="button">
+        <Button id="four" type="number">
           4
-        </div>
-        <div id="five" className="button">
+        </Button>
+
+        <Button id="five" type="number">
           5
-        </div>
-        <div id="six" className="button">
+        </Button>
+
+        <Button id="six" type="number">
           6
-        </div>
+        </Button>
 
-        <div id="add" className="button operation">
+        <Button id="add" type="operation">
           +
-        </div>
+        </Button>
 
-        <div id="seven" className="button">
+        <Button id="seven" type="number">
           7
-        </div>
-        <div id="eight" className="button">
+        </Button>
+
+        <Button id="eight" type="number">
           8
-        </div>
-        <div id="nine" className="button">
+        </Button>
+
+        <Button id="nine" type="number">
           9
-        </div>
+        </Button>
 
-        <div id="equals" className="button operation">
+        <Button id="equals" type="operation">
           =
-        </div>
+        </Button>
 
-        <div id="zero" className="button">
+        <Button id="zero" type="number">
           0
-        </div>
-        <div id="decimal" className="button">
+        </Button>
+        <Button id="decimal" type="number">
           .
-        </div>
+        </Button>
       </div>
     </div>
   );
