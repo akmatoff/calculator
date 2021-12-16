@@ -10,9 +10,6 @@ function Calculator() {
   const prevOperand = useSelector(
     (state: RootState) => state.calculator.prevOperand
   );
-  const operation = useSelector(
-    (state: RootState) => state.calculator.operation
-  );
 
   return (
     <div id="calculator" className="flex-column">
