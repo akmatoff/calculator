@@ -35,24 +35,31 @@ const calculatorSlice = createSlice({
       var prev: number = parseFloat(state.prevOperand);
       var current: number = parseFloat(state.currentOperand);
 
+      console.log(prev, current)
+
       switch (state.operation) {
-        case "+":
+        case "add":
           result = prev + current;
           break;
-        case "-":
+        case "subtract":
           result = prev - current;
           break;
-        case "/":
+        case "divide":
           result = prev / current;
           break;
-        case "x":
+        case "multiply":
           result = prev * current;
           break;
         default:
           return;
       }
 
+      console.log('result', result)
+
+      if (state.prevOperand !== "" && state.currentOperand !== "")
       return { ...state, prevOperand: '', currentOperand: result.toString(), operation: null}
+      else 
+      return { ...state, prevOperand: result.toString(), currentOperand: "", operation: state.operation}
     }
   }
 })

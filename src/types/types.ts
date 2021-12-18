@@ -7,5 +7,5 @@ export interface IButton {
 export interface ICalculatorState {
   currentOperand: string;
   prevOperand: string;
-  operation: "+" | "-" | "/" | "x" | null;
+  operation: "add" | "subtract" | "divide" | "multiply" | null;
 }
