@@ -55,7 +55,7 @@ const calculatorSlice = createSlice({
 
       if (action.payload === "equals") return { ...state, prevOperand: "", currentOperand: result.toString(), operation: null}
 
-      return { ...state, prevOperand: result.toString(), currentOperand: "", operation: state.operation}
+      return { ...state, prevOperand: result.toString(), currentOperand: "", operation: action.payload}
     
     }
   }
