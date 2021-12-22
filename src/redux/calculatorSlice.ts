@@ -18,6 +18,7 @@ const calculatorSlice = createSlice({
     appendNumber: (state, action) => {
       if (action.payload === '.' && state.currentOperand.includes('.')) return;
       if (action.payload === '0' && state.currentOperand === '0') return;
+
       return { ...state, currentOperand: state.currentOperand + action.payload}
     },
     setOperation: (state, action) => {
@@ -30,12 +31,10 @@ const calculatorSlice = createSlice({
     setPrevOperand: (state, action) => {
       return { ...state, prevOperand: action.payload }
     },
-    calculate: (state) => {
+    calculate: (state, action) => {
       var result: number;
       var prev: number = parseFloat(state.prevOperand);
       var current: number = parseFloat(state.currentOperand);
-
-      console.log(prev, current)
 
       switch (state.operation) {
         case "add":
@@ -54,12 +53,10 @@ const calculatorSlice = createSlice({
           return;
       }
 
-      console.log('result', result)
+      if (action.payload === "equals") return { ...state, prevOperand: "", currentOperand: result.toString(), operation: null}
 
-      if (state.prevOperand !== "" && state.currentOperand !== "")
-      return { ...state, prevOperand: '', currentOperand: result.toString(), operation: null}
-      else 
       return { ...state, prevOperand: result.toString(), currentOperand: "", operation: state.operation}
+    
     }
   }
 })

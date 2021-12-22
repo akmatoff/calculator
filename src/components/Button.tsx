@@ -18,6 +18,9 @@ export default function Button({ id, type, children }: IButton) {
   const currentOperand = useSelector(
     (state: RootState) => state.calculator.currentOperand
   );
+  const operation = useSelector(
+    (state: RootState) => state.calculator.operation
+  );
 
   const onButtonClick = () => {
     if (children === "." && (currentOperand === "0" || currentOperand === ""))
@@ -34,7 +37,7 @@ export default function Button({ id, type, children }: IButton) {
         dispatch(clear());
         return;
       case "equals":
-        dispatch(calculate());
+        dispatch(calculate(id));
         return;
     }
 
@@ -43,12 +46,14 @@ export default function Button({ id, type, children }: IButton) {
     dispatch(appendNumber(children));
 
     if (type === "operation" && id !== "equals") {
-      dispatch(setOperation(id));
-      dispatch(setPrevOperand(currentOperand));
-      if (prevOperand !== "") {
-        dispatch(calculate());
+      if (!operation) dispatch(setOperation(id));
+      if (!prevOperand) {
+        dispatch(setCurrentOperand(""));
+        dispatch(setPrevOperand(currentOperand));
       }
-      dispatch(setCurrentOperand(""));
+      if (prevOperand !== "") {
+        dispatch(calculate(id));
+      }
     }
   };
 
