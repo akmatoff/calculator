@@ -32,6 +32,7 @@ const calculatorSlice = createSlice({
       return { ...state, prevOperand: action.payload }
     },
     calculate: (state, action) => {
+
       var result: number;
       var prev: number = parseFloat(state.prevOperand);
       var current: number = parseFloat(state.currentOperand);
@@ -53,7 +54,7 @@ const calculatorSlice = createSlice({
           return;
       }
 
-      if (action.payload === "equals") return { ...state, prevOperand: "", currentOperand: result.toString(), operation: null}
+    if (action.payload === "equals") return { ...state, prevOperand: "", currentOperand: result.toString(), operation: null}
 
       return { ...state, prevOperand: result.toString(), currentOperand: "", operation: action.payload}
     

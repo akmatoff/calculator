@@ -52,6 +52,14 @@ export default function Button({ id, type, children }: IButton) {
         dispatch(setPrevOperand(currentOperand));
       }
       if (prevOperand !== "") {
+        let regex = /[+|-|*]/gi;
+        if (currentOperand === "" || regex.test(currentOperand)) return;
+        if (isNaN(parseInt(currentOperand))) {
+          dispatch(setOperation(id));
+          dispatch(setCurrentOperand(""));
+          return;
+        }
+
         dispatch(calculate(id));
       }
     }
